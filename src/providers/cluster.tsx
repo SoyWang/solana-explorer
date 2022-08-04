@@ -76,7 +76,8 @@ export function clusterUrl(cluster: Cluster, customUrl: string): string {
   }
 }
 
-export const DEFAULT_CLUSTER = Cluster.MainnetBeta;
+// export const DEFAULT_CLUSTER = Cluster.MainnetBeta;
+export const DEFAULT_CLUSTER = Cluster.Custom;
 
 interface State {
   cluster: Cluster;
@@ -141,7 +142,8 @@ type ClusterProviderProps = { children: React.ReactNode };
 export function ClusterProvider({ children }: ClusterProviderProps) {
   const [state, dispatch] = React.useReducer(clusterReducer, {
     cluster: DEFAULT_CLUSTER,
-    customUrl: "",
+    // customUrl: "http://172.22.6.13:8899",
+    customUrl: "https://api.mainnet-beta.solana.com",
     status: ClusterStatus.Connecting,
   });
   const [showModal, setShowModal] = React.useState(false);
